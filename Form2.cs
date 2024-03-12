@@ -16,15 +16,15 @@ namespace Calculadora
         {
             InitializeComponent();
         }
-
+        public char OpcionSeleccionada { get; private set; }
         public void botonpresionado(object sender, EventArgs e)
         {
             try
             {
-                char opc;
                 var boton = ((Button)sender);
-                opc = Convert.ToChar(boton.Tag);
-                getboton(opc);
+                OpcionSeleccionada = Convert.ToChar(boton.Tag);
+                this.DialogResult = DialogResult.OK; // Establece el resultado del diálogo como OK
+                this.Close(); // Cierra el formulario
             }
             catch (Exception ex)
             {
@@ -34,6 +34,11 @@ namespace Calculadora
         public char getboton(char opc)
         {
             return opc;
+            Close();
         }
-     }
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

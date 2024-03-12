@@ -65,7 +65,11 @@ namespace Calculadora
 
         private void Btnsubmenu_Click(object sender, EventArgs e)
         {
-            submenu.Show();
+            if (submenu.ShowDialog() == DialogResult.OK)
+            {
+                opc = submenu.OpcionSeleccionada;
+                OperadorClick(sender, e);
+            }
         }
 
         public void BtnIgual_Click(object sender, EventArgs e)
@@ -114,6 +118,10 @@ namespace Calculadora
                 MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+        private void Calculadora_Load(object sender, EventArgs e)
+        {
+
         }
         public char opc;
         public void OperadorClick(object sender, EventArgs e)
